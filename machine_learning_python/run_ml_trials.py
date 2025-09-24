@@ -29,7 +29,7 @@ def load_and_clean_dataset():
     sc = StandardScaler()
     train_x = sc.fit_transform(train_x)
     test_x = sc.fit_transform(test_x)
-    
+
     print("Loaded dataset")
     return (train_x, test_x, train_y, test_y)
 
@@ -172,15 +172,15 @@ def main():
 
     start_time_svc = time.time()
     start_cpu_time_svc = time.process_time()
-    
+
     finalists_svc = _svc_trials(train_x, test_x, train_y, test_y, K)
-    
+
     end_time_svc = time.time()
     end_cpu_time_svc = time.process_time()
-    
+
     print("SVC results:")
     print(finalists_svc)
-    
+
     time_elapsed_svc = end_time_svc - start_time_svc
     cpu_time_elapsed_svc = end_cpu_time_svc - start_cpu_time_svc
     print(f"Time (seconds) elapsed for SVC:  {time_elapsed_svc}")
@@ -188,15 +188,15 @@ def main():
 
     start_time_mlp = time.time()
     start_cpu_time_mlp = time.process_time()
-    
+
     finalists_mlp = _mlp_trials(train_x, test_x, train_y, test_y, K)
-    
+
     end_time_mlp = time.time()
     end_cpu_time_mlp = time.process_time()
-    
+
     print("MLP results:")
     print(finalists_mlp)
-    
+
     time_elapsed_mlp = end_time_mlp - start_time_mlp
     cpu_time_elapsed_mlp = end_cpu_time_mlp - start_cpu_time_mlp
     print(f"Time (seconds) elapsed for MLP: {time_elapsed_mlp}")
@@ -204,20 +204,20 @@ def main():
 
     start_time_xgb = time.time()
     start_cpu_time_xgb = time.process_time()
-    
+
     finalists_xgb = _xgb_trials(train_x, test_x, train_y, test_y, K)
-    
+
     end_time_xgb = time.time()
     end_cpu_time_xgb = time.process_time()
-    
+
     print("XGB results:")
     print(finalists_xgb)
-    
+
     time_elapsed_xgb = end_time_xgb - start_time_xgb
     cpu_time_elapsed_xgb = end_cpu_time_xgb - start_cpu_time_xgb
-    print("Time (seconds) elapsed for XGB: {time_elapsed_xgb}")
-    print("CPU Time (seconds) elapsed for XGB: {cpu_time_elapsed_xgb}")
-    
+    print(f"Time (seconds) elapsed for XGB: {time_elapsed_xgb}")
+    print(f"CPU Time (seconds) elapsed for XGB: {cpu_time_elapsed_xgb}")
+
     print("-------------------------")
     print("Summary of final results:")
     print("Best SVC: ")
